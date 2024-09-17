@@ -15,10 +15,11 @@ uses
   Vcl.Graphics,
 
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
 
 type
   TFormInicio = class(TFormTDIPadrao)
+    imgBannerSaideira: TImage;
   end;
 
 var

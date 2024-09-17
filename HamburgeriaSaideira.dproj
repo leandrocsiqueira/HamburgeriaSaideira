@@ -142,14 +142,18 @@
             <Form>FormTDIPadrao</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <DCCReference Include="src\HS.View.uFormTDIFilial.pas">
-            <Form>FormTDIFilial</Form>
+        <DCCReference Include="src\HS.View.uFormFilial.pas">
+            <Form>FormFilial</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <DCCReference Include="lib\tdi\PageControlEx.pas"/>
         <DCCReference Include="lib\tdi\TabCloseButton.pas"/>
         <DCCReference Include="lib\tdi\TDI.pas"/>
         <DCCReference Include="lib\tdi\VisualizaImagensDasGuiasAbertas.pas"/>
+        <DCCReference Include="src\HS.View.uFormInicio.pas">
+            <Form>FormInicio</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
