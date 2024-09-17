@@ -15,10 +15,11 @@ uses
   Vcl.Graphics,
 
   Winapi.Messages,
-  Winapi.Windows;
+  Winapi.Windows, Vcl.ExtCtrls;
 
 type
   TFormTDIPadrao = class(TFormPadrao)
+    pnlFundoPadrao: TPanel;
   end;
 
 var

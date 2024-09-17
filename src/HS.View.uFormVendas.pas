@@ -1,4 +1,4 @@
-unit HS.View.uFormFilial;
+unit HS.View.uFormVendas;
 
 interface
 
@@ -19,11 +19,11 @@ uses
   Winapi.Windows;
 
 type
-  TFormFilial = class(TFormTDIPadrao)
+  TFormVendas = class(TFormTDIPadrao)
   end;
 
 var
-  FormFilial: TFormFilial;
+  FormVendas: TFormVendas;
 
 implementation
 

@@ -154,6 +154,10 @@
             <Form>FormInicio</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="src\HS.View.uFormVendas.pas">
+            <Form>FormVendas</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -3,20 +3,21 @@ unit TabCloseButton;
 interface
 
 uses
-  Windows,
-  Messages,
-  SysUtils,
-  Variants,
   Classes,
-  Graphics,
-  Controls,
-  Forms,
-  Dialogs,
   ComCtrls,
-  UxTheme,
-  Themes,
+  Controls,
+  Dialogs,
+  Forms,
+  Graphics,
   Math,
+  Messages,
   PageControlEx,
+  SysUtils,
+  Themes,
+  UxTheme,
+  Variants,
+  Windows,
+
   System.Types;
 
 type
@@ -26,11 +27,13 @@ type
     FCloseButtonShowPushed: Boolean;
     FOnCloseClick: TNotifyEvent;
   protected
-    procedure MouseDown(Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
-      override;
+    procedure MouseDown(Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer); override;
     procedure MouseMove(Shift: TShiftState; X, Y: Integer); override;
-    procedure MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y: Integer); override;
-    procedure DrawTab(TabIndex: Integer; const Rect: TRect; Active: Boolean); override;
+    procedure MouseUp(Button: TMouseButton; Shift: TShiftState;
+      X, Y: Integer); override;
+    procedure DrawTab(TabIndex: Integer; const Rect: TRect;
+      Active: Boolean); override;
     procedure MouseLeave(Sender: TObject);
   public
     constructor Create(AOwner: TComponent); reintroduce;
@@ -45,7 +48,7 @@ implementation
 constructor TTabCloseButton.Create(AOwner: TComponent);
 begin
   inherited Create(AOwner);
- // TabWidth     := 150;  //comentado p/ deixar a largura das abas dinâmica
+  // TabWidth     := 150;  //comentado p/ deixar a largura das abas dinâmica
   OwnerDraw := True;
   UpdateCloseButtons;
 end;
@@ -60,9 +63,9 @@ procedure TTabCloseButton.UpdateCloseButtons;
 var
   I: Integer;
 begin
-//  {$IF RTLVersion < 18}
-  OnMouseLeave := MouseLeave; //CM_MOUSELEAVE not reliable before D2006
-//  {$IFEND}
+  // {$IF RTLVersion < 18}
+  OnMouseLeave := MouseLeave; // CM_MOUSELEAVE not reliable before D2006
+  // {$IFEND}
 
   SetLength(FCloseButtonsRect, PageCount);
 
@@ -72,7 +75,8 @@ begin
   end;
 end;
 
-procedure TTabCloseButton.DrawTab(TabIndex: Integer; const Rect: TRect; Active: Boolean);
+procedure TTabCloseButton.DrawTab(TabIndex: Integer; const Rect: TRect;
+  Active: Boolean);
 const
   CloseBtnSize = 14;
 var
@@ -81,7 +85,7 @@ var
   CloseBtnDrawState: Cardinal;
   CloseBtnDrawDetails: TThemedElementDetails;
 begin
-  //inherited;
+  // inherited;
 
   if InRange(TabIndex, 0, Length(FCloseButtonsRect) - 1) then
   begin
@@ -122,9 +126,11 @@ begin
       Dec(FCloseButtonsRect[TabIndex].Left);
 
       if (TabIndex = ActivePageIndex) and FCloseButtonShowPushed then
-        CloseBtnDrawDetails := StyleServices.GetElementDetails(twSmallCloseButtonPushed)
+        CloseBtnDrawDetails := StyleServices.GetElementDetails
+          (twSmallCloseButtonPushed)
       else
-        CloseBtnDrawDetails := StyleServices.GetElementDetails(twSmallCloseButtonNormal);
+        CloseBtnDrawDetails := StyleServices.GetElementDetails
+          (twSmallCloseButtonNormal);
 
       StyleServices.DrawElement(Canvas.Handle, CloseBtnDrawDetails,
         FCloseButtonsRect[TabIndex]);
@@ -132,10 +138,10 @@ begin
   end;
 end;
 
-procedure TTabCloseButton.MouseDown(Button: TMouseButton; Shift: TShiftState; X,
-  Y: Integer);
+procedure TTabCloseButton.MouseDown(Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 var
-  I, tabIndex: Integer;
+  I, TabIndex: Integer;
   p: TPoint;
 begin
   inherited;
@@ -152,12 +158,12 @@ begin
   end
   else if Button in [mbMiddle, mbRight] then
   begin
-    p := Self.ScreenToClient(Mouse.CursorPos); //pega a posição do mouse
-    tabIndex := Self.IndexOfTabAt(p.X, p.Y);   //pega o index da aba clicada
+    p := Self.ScreenToClient(Mouse.CursorPos); // pega a posição do mouse
+    TabIndex := Self.IndexOfTabAt(p.X, p.Y); // pega o index da aba clicada
 
-    if tabIndex >= 0 then
-      if ActivePageIndex <> tabIndex then
-        ActivePageIndex := tabIndex;  //set a aba como ativa
+    if TabIndex >= 0 then
+      if ActivePageIndex <> TabIndex then
+        ActivePageIndex := TabIndex; // set a aba como ativa
   end;
 end;
 
@@ -185,8 +191,8 @@ begin
   end;
 end;
 
-procedure TTabCloseButton.MouseUp(Button: TMouseButton; Shift: TShiftState; X, Y:
-  Integer);
+procedure TTabCloseButton.MouseUp(Button: TMouseButton; Shift: TShiftState;
+  X, Y: Integer);
 begin
   inherited;
   if (Button = mbLeft) and (ActivePageIndex >= 0) then
@@ -209,4 +215,3 @@ begin
 end;
 
 end.
-

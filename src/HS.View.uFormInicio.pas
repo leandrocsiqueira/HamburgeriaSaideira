@@ -11,11 +11,13 @@ uses
 
   Vcl.Controls,
   Vcl.Dialogs,
+  Vcl.ExtCtrls,
   Vcl.Forms,
   Vcl.Graphics,
+  Vcl.Imaging.pngimage,
 
   Winapi.Messages,
-  Winapi.Windows, Vcl.ExtCtrls, Vcl.Imaging.pngimage;
+  Winapi.Windows;
 
 type
   TFormInicio = class(TFormTDIPadrao)

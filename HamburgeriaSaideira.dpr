@@ -10,7 +10,8 @@ uses
   TabCloseButton in 'lib\tdi\TabCloseButton.pas',
   TDI in 'lib\tdi\TDI.pas',
   VisualizaImagensDasGuiasAbertas in 'lib\tdi\VisualizaImagensDasGuiasAbertas.pas',
-  HS.View.uFormInicio in 'src\HS.View.uFormInicio.pas' {FormInicio};
+  HS.View.uFormInicio in 'src\HS.View.uFormInicio.pas' {FormInicio},
+  HS.View.uFormVendas in 'src\HS.View.uFormVendas.pas' {FormVendas};
 
 {$R *.res}
 
